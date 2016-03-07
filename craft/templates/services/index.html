@@ -1,0 +1,52 @@
+{% extends '_layout' %}
+{% block content %}
+<div class="container">
+  <div class="page-header">
+    <h1>Services</h1>
+  </div>
+  <p>You been with a woman, Zophael? It's like dying... you moan, cry out.</p>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-1 blog-sidebar">
+      <div class="sidebar-module">
+        <ol class="list-unstyled">
+          {% for service in craft.entries.section ('services') %}
+          <li><a href="#{{service.title}}">{{service.title}}</a></li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div>
+        <p>No. If we don't have a key, we can't open whatever it unlocks.</p>
+      </div>
+
+      {% for service in craft.entries.section ('services') %}
+      <div id="{{service.title}}">
+        <h4>{{service.title}}</h4>
+        {{service.body}}
+      </div>
+
+      {% for faq in service.faqs %}
+      <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="heading-{{loop.index}}">
+            <h4 class="panel-title">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{loop.index}}" aria-expanded="false" aria-controls="collapse-{{loop.index}}">
+              {{faq.heading}}
+            </a>
+            </h4>
+          </div>
+          <div id="collapse-{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{loop.index}}">
+            {{faq.body}}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

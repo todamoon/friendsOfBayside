@@ -1,0 +1,86 @@
+{% extends '_layout' %}
+
+{% block content %}
+
+
+{# full width image #}
+
+<div class="page-header">
+  <h1>{{entry.title}}</h1>
+</div>
+
+
+<div class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+
+
+{% if entry.servicesImage|length %}
+  <div class="main-gallery js-flickity" data-flickity-options='{ "cellAlign": "center", "contain": true }'>
+    {% for picture in entry.servicesImage %}
+      <div class="gallery-cell">
+        <img src="{{ picture.url }}" class=""  height="350" alt="Image Title" />
+      </div>
+    {% endfor %}
+  </div>
+
+{% endif %}
+
+<div class="pull-right">
+  {% include '_includes/_impact' %}
+</div>
+
+
+{{entry.body}}
+
+<h3>F.A.Q.</h3>
+{% for faq in entry.faqs %}
+
+<div id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="heading-{{loop.index}}">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{loop.index}}" aria-expanded="false" aria-controls="collapse-{{loop.index}}">
+          {{faq.heading}}
+        </a>
+      </h4>
+    </div>
+    <div id="collapse-{{loop.index}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{loop.index}}">
+      {{faq.body}}
+    </div>
+  </div>
+</div>
+{% endfor %}
+{# end of FAQ collapse #}
+{# end of main content row #}
+
+
+{% if entry.relatedLocations | length %}
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">
+        Visit Us today</h3>
+    </div>
+    <ul class="list-group list-group-flush">
+      {% for location in entry.relatedLocations %}
+      <li class="list-group-item">
+        <a href="/locations">
+          {{ location.title }}
+        </a>
+      </li>
+
+      {% endfor %}
+    </ul>
+  </div>
+  {# end of card div #}
+{% endif %}
+  {# end of row #}
+
+<hr/>
+
+{# pagination section #}
+<h2>Other Services</h2>
+
+{% include '/_includes/_allServices' with {'currentEntry' : entry} %}
+
+
+
+{% endblock %}

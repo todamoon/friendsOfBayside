@@ -1,0 +1,30 @@
+{
+  "name": "hw-healthcare",
+  "authors": [
+    "Keith Mancuso <keithmancuso@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.2",
+    "font-awesome": "fontawesome#~4.5.0",
+    "holderjs": "~2.9.0",
+    "flickity": "~1.1.2",
+    "filament-sticky": "^0.1.6",
+    "angular": "^1.5.0"
+  },
+  "resolutions": {
+    "bootstrap": "v4.0.0-alpha.3"
+  }
+}

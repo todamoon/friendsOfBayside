@@ -1,0 +1,14 @@
+{
+  "local": {
+    "dbName": "movement_craft",
+    "host": "localhost",
+    "user":"root",
+    "pass":"root"
+  },
+  "stage": {
+    "dbName": "movement_craft",
+    "host": "",
+    "user":"forge",
+    "pass":""
+  }
+}
